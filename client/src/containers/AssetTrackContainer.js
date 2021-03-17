@@ -1,35 +1,70 @@
 import React from "react";
 import styled from "styled-components";
-import AssetDisplay from "../components/AssetDisplay";
-import AssetModal from "../components/AssetModal";
+import AssetCard from "../components/AssetCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation, Scrollbar } from "swiper";
+import "swiper/swiper-bundle.css";
+import { convertToEthTokens } from "../utils/helpers";
+
+SwiperCore.use([Navigation, Scrollbar]);
 
 const AssetTrackContainer = ({ list }) => {
-  return list.map((nft, index) => {
-    const {
-      name,
-      description,
-      collection,
-      num_sales: numSales,
-      traits,
-      total_price: totalPrice,
-      payment_token: paymentToken,
-    } = nft;
-    return (
-      <>
-        <AssetDisplay key={`display-${index}`} src={nft.image_url} />
-        <AssetModal
-          key={`modal-${index}`}
-          name={name}
-          description={description}
-          collection={collection}
-          numSales={numSales}
-          traits={traits}
-          totalPrice={totalPrice}
-          paymentToken={paymentToken}
-        />
-      </>
-    );
-  });
+  return (
+    <StyledSwiper
+      spaceBetween={0}
+      slidesPerView={1}
+      style={{ margin: "40px" }}
+      onSlideChange={() => console.log("slide change")}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      {list.map((nft, index) => {
+        const {
+          name,
+          image_url: image,
+          description,
+          collection,
+          num_sales: numSales,
+          traits,
+          last_sale,
+        } = nft;
+
+        const totalEth = convertToEthTokens(Number(last_sale.total_price));
+
+        // console.log(totalEth);
+        const { usd_price: currentEthPrice } = last_sale.payment_token;
+        const totalPrice = totalEth * currentEthPrice;
+
+        return (
+          <AssetTrackWrapper>
+            <SwiperSlide style={{}}>
+              <AssetCard
+                index={index}
+                name={name}
+                image={image}
+                description={description}
+                collection={collection}
+                numSales={numSales}
+                traits={traits}
+                totalPrice={totalPrice}
+              />
+            </SwiperSlide>
+          </AssetTrackWrapper>
+        );
+      })}
+    </StyledSwiper>
+  );
 };
 
 export default AssetTrackContainer;
+
+const AssetTrackWrapper = styled.div`
+  width: 100%;
+  position: relative;
+`;
+
+const StyledSwiper = styled(Swiper)`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+`;

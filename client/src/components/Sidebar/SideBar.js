@@ -31,6 +31,7 @@ const SidebarWrapper = styled.div`
   }
   -ms-overflow-style: none;
   scrollbar-width: none;
+  z-index: 5;
 `;
 
 const ContentWrapper = styled.div`

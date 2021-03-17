@@ -8,21 +8,22 @@ const AssetModal = ({
   numSales,
   traits,
   totalPrice,
-  paymentToken,
 }) => {
   return (
     <ModalWrapper>
       <ModalInfo>
         <AssetModalTitle>{name}</AssetModalTitle>
-        <AssetModalContent>
-          <h4>{description}</h4>
-        </AssetModalContent>
+        <AssetModalContent>{description}</AssetModalContent>
         <AssetTraitWrapper>
-          {traits.map((trait) => (
-            <h5>{trait.value}</h5>
-          ))}
+          Traits
+          <TraitDisplay>
+            {traits.map((trait) => (
+              <TraitText>{trait.value}</TraitText>
+            ))}
+          </TraitDisplay>
         </AssetTraitWrapper>
-        <AssetMetricsWrapper>{totalPrice}</AssetMetricsWrapper>
+        <AssetMetricsWrapper>${totalPrice} USD</AssetMetricsWrapper>
+        {}
       </ModalInfo>
     </ModalWrapper>
   );
@@ -31,34 +32,67 @@ const AssetModal = ({
 export default AssetModal;
 
 const ModalWrapper = styled.div`
-  position: absolute;
-  width: 300px;
-  top: 50%;
-  right: 30px;
-  padding: 0px;
-  transform: translateY(-50%);
-  background-color: white;
+  padding: 5%;
   pointer-events: auto;
+  background-color: rgb(255, 255, 255);
   overflow: hidden;
+  position: absolute;
+  right: 30px;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  @media (min-width: 1024px) {
+    position: absolute;
+    width: 300px;
+    top: 50%;
+    right: 30px;
+    padding: 0px;
+    transform: translateY(-50%);
+    background-color: transparent;
+  }
+  @media (min-width: 1600px) {
+    width: 360px;
+    right: 60px;
+  }
 `;
 
 const ModalInfo = styled.div`
-  padding: 30px 25px;
-  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: block;
+
+  @media (min-width: 1024px) {
+    padding: 30px 25px;
+    background-color: rgb(255, 255, 255);
+  }
 `;
 
 const AssetModalTitle = styled.h2`
-  margin-bottom: 20px;
+  font-size: var(--title-one);
   color: var(--color-text-dark);
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.15em;
 `;
 const AssetModalContent = styled.div`
   margin-bottom: 20px;
-  font-size: 12px;
-  line-height: 20px;
+  font-size: var(--text-four);
   color: var(--color-text-medium);
+  line-height: 20px;
   width: 100%;
 `;
 
-const AssetTraitWrapper = styled.div``;
+const TraitText = styled.h3`
+  font-size: var(--title-two);
+`;
+
+const TraitDisplay = styled.div``;
+
+const AssetTraitWrapper = styled.div`
+  font-size: var(--title-two);
+`;
 
 const AssetMetricsWrapper = styled.div``;

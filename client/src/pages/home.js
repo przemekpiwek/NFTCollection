@@ -49,8 +49,6 @@ const Home = () => {
     return <h1>error</h1>;
   }
 
-  console.log("data", data);
-
   return (
     <HomeWrapper>
       <Sidebar />
@@ -62,10 +60,11 @@ const Home = () => {
 export default Home;
 
 const HomeWrapper = styled.div`
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
   background: #fbfbfb;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
 `;

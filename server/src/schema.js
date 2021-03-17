@@ -16,7 +16,6 @@ const typeDefs = gql`
     num_sales: String
     traits: [Trait]
     last_sale: LastSale
-    payment_token: Payment
   }
 
   type LastSale {
