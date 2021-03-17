@@ -85,13 +85,13 @@ h1 {
   font-size: 2.488em;
 }
 
-h2 {font-size: 2.074em;}
+h2 {font-size: 1em;}
 
 h3 {font-size: 1.728em;}
 
-h4 {font-size: 1.44em;}
+h4 {font-size: 0.75em;}
 
-h5 {font-size: 1.2em;}
+h5 {font-size: 0.6em;}
 
 small, .text_small {font-size: 0.833em;}
 `;

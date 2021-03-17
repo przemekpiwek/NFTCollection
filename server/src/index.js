@@ -1,5 +1,6 @@
 const { ApolloServer, MockList } = require("apollo-server");
 const typeDefs = require("./schema");
+const fetch = require("node-fetch");
 
 const mocks = {
   Query: () => ({
@@ -49,7 +50,20 @@ const mocks = {
   }),
 };
 
-const server = new ApolloServer({ typeDefs, mocks });
+const resolvers = {
+  Query: {
+    listForHome: async (_, { collection }) => {
+      const response = await fetch(
+        `https://api.opensea.io/api/v1/assets?collection=cryptopunks&order_by=sale_price&order_direction=desc&offset=0&limit=50`
+      );
+      const json = await response.json();
+      console.log("response", json);
+      return json.assets;
+    },
+  },
+};
+
+const server = new ApolloServer({ typeDefs, resolvers });
 
 server.listen().then(() => {
   console.log("server running");
