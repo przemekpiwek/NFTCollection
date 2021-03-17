@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/przemekpiwek/NFTCollection/issues"
   },
-  "homepage": "https://github.com/przemekpiwek/NFTCollection#readme"
+  "homepage": "https://github.com/przemekpiwek/NFTCollection#readme",
+  "dependencies": {
+    "concurrently": "^6.0.0"
+  }
 }

@@ -54,10 +54,10 @@ const resolvers = {
   Query: {
     listForHome: async (_, { collection }) => {
       const response = await fetch(
-        `https://api.opensea.io/api/v1/assets?collection=cryptopunks&order_by=sale_price&order_direction=desc&offset=0&limit=50`
+        `https://api.opensea.io/api/v1/assets?collection=${collection}&order_by=sale_price&order_direction=desc&offset=0&limit=50`
       );
       const json = await response.json();
-      console.log("response", json);
+      console.log("response", json.assets);
       return json.assets;
     },
   },

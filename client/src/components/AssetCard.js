@@ -37,9 +37,11 @@ export default AssetCard;
 const AssetCardWrapper = styled.div`
   display: flex;
   height: 100%;
+  align-items: center;
+  justify-content: center;
   position: relative;
 `;
 
 const FlexiblePadding = styled.div`
-  min-width: 250px;
+  /* min-width: 250px; */
 `;

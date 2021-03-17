@@ -15,6 +15,4 @@ const DisplayWrapper = styled.div``;
 
 const AssetImage = styled.img`
   display: block;
-  width: 300px;
-  height: 400px;
 `;

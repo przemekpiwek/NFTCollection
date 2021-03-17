@@ -1,14 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { gql, useQuery } from "@apollo/client";
+import { GlobalContext } from "../pages/index";
 import Sidebar from "../components/Sidebar/SideBar";
 import AssetTrackContainer from "../containers/AssetTrackContainer";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
-const ASSETS = gql`
-  query getAssetList {
-    listForHome(collection: "cryptopunks") {
+const GET_ASSETS = gql`
+  query getAssetList($collection: String!) {
+    listForHome(collection: $collection) {
       id
       name
 
@@ -38,7 +39,10 @@ const ASSETS = gql`
 `;
 
 const Home = () => {
-  const { loading, error, data } = useQuery(ASSETS);
+  const { state } = React.useContext(GlobalContext);
+  const { loading, error, data } = useQuery(GET_ASSETS, {
+    variables: { collection: state.selectedCollection },
+  });
 
   if (loading) {
     console.log("loading");

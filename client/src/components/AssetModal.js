@@ -14,16 +14,18 @@ const AssetModal = ({
       <ModalInfo>
         <AssetModalTitle>{name}</AssetModalTitle>
         <AssetModalContent>{description}</AssetModalContent>
-        <AssetTraitWrapper>
-          Traits
-          <TraitDisplay>
-            {traits.map((trait) => (
-              <TraitText>{trait.value}</TraitText>
-            ))}
-          </TraitDisplay>
-        </AssetTraitWrapper>
+        {!!traits.length && (
+          <AssetTraitWrapper>
+            <AssetTraitTitle>Traits</AssetTraitTitle>
+            <TraitDisplay>
+              {traits.map((trait) => (
+                <TraitPill>{trait.value}</TraitPill>
+              ))}
+            </TraitDisplay>
+          </AssetTraitWrapper>
+        )}
         <AssetMetricsWrapper>${totalPrice} USD</AssetMetricsWrapper>
-        {}
+        <h3>{numSales}</h3>
       </ModalInfo>
     </ModalWrapper>
   );
@@ -85,14 +87,33 @@ const AssetModalContent = styled.div`
   width: 100%;
 `;
 
-const TraitText = styled.h3`
-  font-size: var(--title-two);
+const TraitPill = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 2px;
+  padding: 3px 12px;
+  height: 20px;
+  background-color: rgba(21, 178, 229, 0.06);
+  border-color: rgb(21, 178, 229);
+  font-size: var(--text-three);
 `;
 
-const TraitDisplay = styled.div``;
+const TraitDisplay = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
 
-const AssetTraitWrapper = styled.div`
+const AssetTraitWrapper = styled.div``;
+
+const AssetTraitTitle = styled.div`
   font-size: var(--title-two);
+  line-height: 2;
 `;
 
 const AssetMetricsWrapper = styled.div``;
+
+const AssetCollectionsWrapper = styled.div``;

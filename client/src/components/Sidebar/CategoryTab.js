@@ -1,14 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import { GlobalContext } from "../../pages";
+import { collectionSlugs } from "../../utils/helpers";
 
 const CategoryTab = ({ content }) => {
+  const { dispatch } = React.useContext(GlobalContext);
   const handleClick = (e) => {
-    console.log(e.target.value);
+    let _collection = collectionSlugs.find((el) => {
+      return el.name === e.target.value;
+    });
+    dispatch({ type: "SELECT_COLLECTION", payload: _collection.slug });
   };
 
   return (
     <StyledButton onClick={handleClick} value={content}>
-      <Text>{content}</Text>
+      {content}
     </StyledButton>
   );
 };
@@ -38,8 +44,4 @@ const StyledButton = styled.button`
   &:focus {
     outline: none;
   }
-`;
-
-const Text = styled.div`
-  text-overflow: ellipsis;
 `;

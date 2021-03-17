@@ -1,18 +1,10 @@
 import React from "react";
 import CategoryTab from "./CategoryTab";
+import { collectionSlugs } from "../../utils/helpers";
 
 const CategoryList = () => {
-  const mockCategories = [
-    "CryptoPunks",
-    "Wrapped MoonCatsRescue",
-    "Rarible",
-    "Sorare",
-    "Decentraland",
-    "Gan Punks V2",
-  ];
-
-  return mockCategories.map((title, index) => {
-    return <CategoryTab key={index} content={title} />;
+  return collectionSlugs.map((collection, index) => {
+    return <CategoryTab key={index} content={collection.name} />;
   });
 };
 

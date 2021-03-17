@@ -6,7 +6,7 @@ This app is built using React and GraphQL.
 
 This app is currently in progress, but you can follow my progress anyways. In the future, the website will be hosted.
 
-#To run locally on your computer
+# To run locally on your computer
 
 Clone the current git repository
 
@@ -17,5 +17,5 @@ git clone https://github.com/przemekpiwek/NFTCollection.git into your terminal
 Install all dependencies and begin the app
 
 ```
-yarn && yarn start
+yarn install && yarn start
 ```

@@ -10,13 +10,7 @@ SwiperCore.use([Navigation, Scrollbar]);
 
 const AssetTrackContainer = ({ list }) => {
   return (
-    <StyledSwiper
-      spaceBetween={0}
-      slidesPerView={1}
-      style={{ margin: "40px" }}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
+    <StyledSwiper spaceBetween={0} slidesPerView={1} style={{}}>
       {list.map((nft, index) => {
         const {
           name,
@@ -29,8 +23,6 @@ const AssetTrackContainer = ({ list }) => {
         } = nft;
 
         const totalEth = convertToEthTokens(Number(last_sale.total_price));
-
-        // console.log(totalEth);
         const { usd_price: currentEthPrice } = last_sale.payment_token;
         const totalPrice = totalEth * currentEthPrice;
 
