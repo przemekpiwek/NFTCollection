@@ -5,6 +5,7 @@ import { GlobalContext } from "../pages/index";
 import Sidebar from "../components/Sidebar/SideBar";
 import AssetTrackContainer from "../containers/AssetTrackContainer";
 import Loader from "react-loader-spinner";
+import Footer from "../components/Footer";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const GET_ASSETS = gql`
@@ -57,6 +58,7 @@ const Home = () => {
     <HomeWrapper>
       <Sidebar />
       <AssetTrackContainer list={data.listForHome} />
+      <Footer />
     </HomeWrapper>
   );
 };

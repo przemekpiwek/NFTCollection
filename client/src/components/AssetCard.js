@@ -16,7 +16,6 @@ const AssetCard = ({
 }) => {
   return (
     <AssetCardWrapper>
-      <FlexiblePadding />
       <AssetDisplay key={`display-${index}`} src={image} />
       <AssetModal
         key={`modal-${index}`}
@@ -40,8 +39,4 @@ const AssetCardWrapper = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-`;
-
-const FlexiblePadding = styled.div`
-  /* min-width: 250px; */
 `;

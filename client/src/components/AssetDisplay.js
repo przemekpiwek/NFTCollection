@@ -15,4 +15,6 @@ const DisplayWrapper = styled.div``;
 
 const AssetImage = styled.img`
   display: block;
+  isolation: isolate;
+  z-index: 2000;
 `;
